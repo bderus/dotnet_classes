@@ -1,4 +1,4 @@
-﻿using System;
+﻿using TicTacToe.BusinessLogic;
 
 namespace TicTacToe
 {
@@ -6,7 +6,9 @@ namespace TicTacToe
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var game = new TicTacToeGame();
+
+            game.StartGame();
         }
     }
 }

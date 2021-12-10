@@ -13,6 +13,7 @@ namespace TicTacToe.Models
 
         public Board()
         {
+            BoardRows = new List<string[]>();
             GenerateBoardNodes();
         }
 

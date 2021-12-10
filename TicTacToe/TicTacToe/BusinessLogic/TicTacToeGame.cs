@@ -74,16 +74,11 @@ namespace TicTacToe.BusinessLogic
         {
             gameResult = "Playing";
 
-            foreach (var row in CurrentBoard.BoardRows)
-            {
-                if (row.Contains("*")) 
-                    return false;
-                
-                gameResult = "Draw";
-                return true;
-            }
-
-            return false;
+            if (CurrentBoard.BoardRows.Any(r => r.Contains("*"))) 
+                return false;
+            
+            gameResult = "Draw";
+            return true;
         }
 
         private void MakeMove()
@@ -121,18 +116,17 @@ namespace TicTacToe.BusinessLogic
                 Console.WriteLine("Please select your player symbol (X,O): ");
                 var userInput = Console.ReadLine();
 
-                if (userInput == SymbolX)
+                switch (userInput)
                 {
-                    CurrentPlayer = _playerX;
-                }
-                else if (userInput == SymbolO)
-                {
-                    CurrentPlayer = _playerO;
-                }
-                else
-                {
-                    Console.WriteLine($"I don't understand this symbol - {userInput}");
-                    continue;
+                    case SymbolX:
+                        CurrentPlayer = _playerX;
+                        break;
+                    case SymbolO:
+                        CurrentPlayer = _playerO;
+                        break;
+                    default:
+                        Console.WriteLine($"I don't understand this symbol - {userInput}");
+                        continue;
                 }
 
                 break;

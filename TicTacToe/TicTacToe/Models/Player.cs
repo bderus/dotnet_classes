@@ -8,11 +8,11 @@ namespace TicTacToe.Models
 {
     public class Player
     {
-        public string PlayerType { get; set; }
+        public string PlayerSymbol { get; set; }
 
-        public Player(string playerType)
+        public Player(string playerSymbol)
         {
-            PlayerType = playerType;
+            PlayerSymbol = playerSymbol;
         }
     }
 }

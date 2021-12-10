@@ -9,7 +9,7 @@ namespace TicTacToe.Models
 {
     public class Board
     {
-        public List<BoardNode> BoardNodes { get; set; }
+        public List<string[]> BoardRows { get; set; }
 
         public Board()
         {
@@ -20,12 +20,8 @@ namespace TicTacToe.Models
         {
             for(int x = 0; x < 3; x++)
             {
-                for (int y = 0; y < 3; y++)
-                {
-                    var currentPoint = new Point(x, y);
-                    var boardNode = new BoardNode(currentPoint);
-                    BoardNodes.Add(boardNode);
-                }
+                var boardRow = new [] {"*", "*", "*"};
+                BoardRows.Add(boardRow);
             }
         }
     }

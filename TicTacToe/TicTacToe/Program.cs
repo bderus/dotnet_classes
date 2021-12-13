@@ -4,9 +4,11 @@ namespace TicTacToe
 {
     class Program
     {
-        static void Main(string[] args)
+
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           Tictactoe gameTictactoe = new Tictactoe("X");
+           gameTictactoe.StartGame();
         }
     }
 }

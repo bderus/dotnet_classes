@@ -10,6 +10,7 @@ namespace TicTacToe.BusinessLogic
     {
         private const string SymbolX = "X";
         private const string SymbolO = "O";
+        private const string SymbolStar = "*";
         private const string WrongInputError = "Wrong Input!";
 
         private readonly Player _playerX = new Player(SymbolX);
@@ -48,6 +49,9 @@ namespace TicTacToe.BusinessLogic
 
                 if (CheckEndgameConditions(out var gameResult))
                 {
+                    Console.WriteLine("GAME OVER!");
+                    Console.Clear();
+                    PrintCurrentBoard();
                     Console.WriteLine($"Game has ended with result: {gameResult}");
                     return;
                 }
@@ -74,7 +78,7 @@ namespace TicTacToe.BusinessLogic
         {
             gameResult = "Playing";
 
-            if (CurrentBoard.BoardRows.Any(r => r.Contains("*"))) 
+            if (CurrentBoard.BoardRows.Any(r => r.Contains(SymbolStar))) 
                 return false;
             
             gameResult = "Draw";
@@ -95,7 +99,7 @@ namespace TicTacToe.BusinessLogic
                 }
 
                 var selectedPoint = _pointMappingDictionary[userInput];
-                if (CurrentBoard.BoardRows[selectedPoint.X][selectedPoint.Y] == "*")
+                if (CurrentBoard.BoardRows[selectedPoint.X][selectedPoint.Y] == SymbolStar)
                 {
                     CurrentBoard.BoardRows[selectedPoint.X][selectedPoint.Y] = CurrentPlayer.PlayerSymbol;
                 }

@@ -8,7 +8,9 @@ namespace TicTacToe
         public static void Main(string[] args)
         {
             //TODO - Add possibility to select starting player symbol and pass it to constructor as variable
-           TicTacToeGame ticTacToeGame = new TicTacToeGame("X");
+            Console.WriteLine("Choose X or O: ");
+            var selectedPlayer = Console.ReadLine();
+            TicTacToeGame ticTacToeGame = new TicTacToeGame(selectedPlayer);
 
            ticTacToeGame.Play();
         }

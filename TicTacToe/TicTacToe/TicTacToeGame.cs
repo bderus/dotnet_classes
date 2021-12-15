@@ -22,7 +22,7 @@ namespace TicTacToe
             }
         };
 
-        private string CurrentPlayer { get; }
+        private string CurrentPlayer { get; set; }
 
         public TicTacToeGame(string currentPlayer)
         {
@@ -36,81 +36,76 @@ namespace TicTacToe
                 PrintBoard();
                 PlayerChoice();
 
+
                 if (CheckEndgameConditions())//if the method returns true -> do whatever is inside of the IF block
                 {
                     //TODO - End the game here
+                    PrintBoard();
+                    Console.WriteLine("KONIEC GRY");
+                    return;
+                }
 
-
-                    SwitchCurrentPlayer();
+                SwitchCurrentPlayer();
+                Console.Clear();
             }
         }
 
         private void SwitchCurrentPlayer()
         {
-                //TODO - Implement method which switches current player (from "X" to "O" and vice versa)
-                if (CurrentPlayer == "X")
-                    CurrentPlayer = "0";
-                else if (CurrentPlayer == "0")
-                    CurrentPlayer = "X";
-
-            throw new NotImplementedException();
+            //TODO - Implement method which switches current player (from "X" to "O" and vice versa)
+            if (CurrentPlayer == "X")
+                CurrentPlayer = "0";
+            else if (CurrentPlayer == "0")
+                CurrentPlayer = "X";
+            
+ 
         }
 
         private bool CheckEndgameConditions()
         {
                 //TODO - Implement method which checks endgame conditions - draw and win
-                if (_board[0][0] == _board[0][1] == _board[0][2] == CurrentPlayer)
-                {
-                    return true;
-                }
+                if (_board[0][0] == _board[0][1] && _board[0][1] == _board[0][2] && _board[0][2] == CurrentPlayer)
+                    return true;               
 
-                if (_board[1][0] == _board[1][1] == _board[1][2] == CurrentPlayer)
-                {
+                if (_board[1][0] == _board[1][1] && _board[1][1] == _board[1][2] && _board[1][2] == CurrentPlayer)             
                     return true;
-                }
+                
 
-                if (_board[2][0] == _board[2][1] == _board[2][2] == CurrentPlayer)
-                {
+                if (_board[2][0] == _board[2][1] && _board[2][1] == _board[2][2] && _board[2][1] == CurrentPlayer)               
                     return true;
-                }
-                if (_board[0][0] == _board[1][0] == _board[2][0] == CurrentPlayer)
-                {
+                
+                if (_board[0][0] == _board[1][0] && _board[1][0] == _board[2][0] && _board[2][0] == CurrentPlayer)
                     return true;
-                }
-                if (_board[0][1] == _board[1][1] == _board[2][1] == CurrentPlayer)
-                {
+ 
+                if (_board[0][1] == _board[1][1] && _board[1][1] == _board[2][1] && _board[2][1] == CurrentPlayer)
                     return true;
-                }
-                if (_board[0][2] == _board[1][2] == _board[2][2] == CurrentPlayer)
-                {
+
+                if (_board[0][2] == _board[1][2] && _board[1][2] == _board[2][2] && _board[2][2] == CurrentPlayer)
                     return true;
-                }
-                if (_board[0][0] == _board[1][1] == _board[2][2] == CurrentPlayer)
-                {
+
+                if (_board[0][0] == _board[1][1] && _board[1][1] == _board[2][2] && _board[2][2] == CurrentPlayer)
                     return true;
-                }
-                if (_board[2][0] == _board[1][1] == _board[0][2] == CurrentPlayer)
-                {
+
+                if (_board[2][0] == _board[1][1] && _board[1][1] == _board[0][2] && _board[0][2] == CurrentPlayer)
                     return true;
-                }
                 
 
                 foreach (var item in _board)
                     foreach (var item2 in item)
-                        if (item2 != "*")
+                        if (item2 == "*")
                             return false;
                 //TODO - This method returns bool <- it is used in the Play() method to check if the game should be ended
                 return true;
 
-                throw new NotImplementedException();
+                
         }
 
         private void PlayerChoice()
         { 
             Console.WriteLine("Wybierz Pole: ");
-            var userInput= Console.ReadLine();
+            var userInput = Console.ReadLine();
 
-            if (userInput== "1")
+            if (userInput == "1")
             {
                 _board[0][0] = CurrentPlayer;
                 
@@ -156,7 +151,7 @@ namespace TicTacToe
 
             }
                 //TODO - Implement missing player selections; *Extra - Implement user input validation
-                PrintBoard();
+            
         }
         
 

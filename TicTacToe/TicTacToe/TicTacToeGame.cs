@@ -22,12 +22,13 @@ namespace TicTacToe
             }
         };
 
-        private string CurrentPlayer { get; set; }
+        public string CurrentPlayer { get; set; }
 
         public TicTacToeGame(string currentPlayer)
         {
             CurrentPlayer = currentPlayer;
         }
+
 
         public void Play()
         {

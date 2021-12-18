@@ -8,16 +8,17 @@ namespace TicTacToe
         public static void Main(string[] args)
         {
             //TODO - Add possibility to select starting player symbol and pass it to constructor as variable
+            SelectPlayer();
+
+        }
+        static void SelectPlayer()
+        {
             Console.WriteLine("Wybierz gracza: X lub 0: ");
             var selectPlayer = Console.ReadLine();
 
             TicTacToeGame ticTacToeGame = new TicTacToeGame(selectPlayer);
-            SelectPlayer();
-        }
-        static void SelectPlayer()
-        {
-            var selectPlayer = Console.ReadLine();
-            TicTacToeGame ticTacToeGame = new TicTacToeGame(selectPlayer);
+
+
             switch (selectPlayer)
             {
                 case "X":
@@ -31,18 +32,8 @@ namespace TicTacToe
                     Console.WriteLine("Nie ma takiego gracza ");
                     SelectPlayer();
                     break;
-            }
-        
-              
-
-            
                 
-
-            
-
-               
-
-            
+            }
 
         }
     }

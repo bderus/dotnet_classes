@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     class Program
     {
-
+           
         public static void Main(string[] args)
         {
             //TODO - Add possibility to select starting player symbol and pass it to constructor as variable
@@ -15,9 +15,9 @@ namespace TicTacToe
         {
             Console.WriteLine("Wybierz gracza: X lub 0: ");
             var selectPlayer = Console.ReadLine();
-
+            
             TicTacToeGame ticTacToeGame = new TicTacToeGame(selectPlayer);
-
+            
 
             switch (selectPlayer)
             {
@@ -34,7 +34,7 @@ namespace TicTacToe
                     break;
                 
             }
-
+            
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TicTacToe
             }
         };
 
-        public string CurrentPlayer { get; set; }
+        private string CurrentPlayer { get; set; }
 
         public TicTacToeGame(string currentPlayer)
         {
@@ -174,3 +174,4 @@ namespace TicTacToe
         }
     }
 }
+               

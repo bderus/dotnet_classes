@@ -20,6 +20,21 @@ namespace ToDoApp.BusinessLogic.Controllers
             ToDoItemController = new ToDoItemController();
         }
 
+        public ToDoList CreateNewToDoList(string listName)
+        {
+            var newToDoList = new ToDoList
+            {
+                Id = CurrentListId,
+                Name = listName,
+                ToDoItems = new List<ToDoItem>()
+
+            };
+
+            ToDoLists.Add(newToDoList);
+            CurrentListId ++;
+            return newToDoList;
+        }
+
 
 
     }

@@ -18,10 +18,12 @@ namespace ToDoApp.BusinessLogic.Controllers
 
         public ToDoItem CreateNewToDoItem(string itemName)
         {
-            var toDoItem = new ToDoItem();
-            toDoItem.Id = CurrentId;
-            toDoItem.Name = itemName;
-            toDoItem.IsDone = false;
+            var toDoItem = new ToDoItem
+            {
+                Id = CurrentId,
+                Name = itemName,
+                IsDone = false
+            };
 
             CurrentId++;
 

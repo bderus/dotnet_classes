@@ -9,23 +9,23 @@ namespace ToDoApp.BusinessLogic.Controllers
 {
     internal class ToDoItemController
     {
-        private int CurrentId { get; set; }
+        private int CurrentItemId { get; set; }
 
         public ToDoItemController()
         { 
-            CurrentId = 1;
+            CurrentItemId = 1;
         }
 
         public ToDoItem CreateNewToDoItem(string itemName)
         {
             var toDoItem = new ToDoItem
             {
-                Id = CurrentId,
+                Id = CurrentItemId,
                 Name = itemName,
                 IsDone = false
             };
 
-            CurrentId++;
+            CurrentItemId++;
 
             return toDoItem;
            

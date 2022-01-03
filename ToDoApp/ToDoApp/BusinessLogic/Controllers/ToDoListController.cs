@@ -41,7 +41,7 @@ namespace ToDoApp.BusinessLogic.Controllers
                 if (list.Id == ListId)
                 {
                     ToDoItemController.CreateNewToDoItem(itemName);
-                    
+                    list.ToDoItems.Add();
                 }
                 
             }

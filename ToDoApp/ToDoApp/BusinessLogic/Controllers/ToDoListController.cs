@@ -40,12 +40,13 @@ namespace ToDoApp.BusinessLogic.Controllers
             {
                 if (list.Id == ListId)
                 {
-                    ToDoItemController.CreateNewToDoItem(itemName);
-                    list.ToDoItems.Add();
+                    var newItem = ToDoItemController.CreateNewToDoItem(itemName);
+                    list.ToDoItems.Add(newItem);
+                    return true;
                 }
                 
             }
-            return true;
+            return false;
         }
 
 

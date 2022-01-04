@@ -34,11 +34,11 @@ namespace ToDoApp.BusinessLogic.Controllers
             CurrentListId ++;
             return newToDoList;
         }
-        public bool AddNewItemToList(int ListId, string itemName)
+        public bool AddNewItemToList(int listId, string itemName)
         {
             foreach (var list in ToDoLists)
             {
-                if (list.Id == ListId)
+                if (list.Id == listId)
                 {
                     var newItem = ToDoItemController.CreateNewToDoItem(itemName);
                     list.ToDoItems.Add(newItem);
@@ -49,6 +49,26 @@ namespace ToDoApp.BusinessLogic.Controllers
             return false;
         }
 
+        public List<ToDoItem> GetListItems(int listId)
+        {
+            foreach (var list in ToDoLists)
+            {
+                if (list.Id == listId)
+                {
+
+                    return list.ToDoItems;
+
+                   
+                }
+
+            }
+
+            var newList = new List<ToDoItem>();
+
+            return newList;
+
+
+        }
 
 
     }

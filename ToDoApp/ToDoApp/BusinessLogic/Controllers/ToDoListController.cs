@@ -34,6 +34,20 @@ namespace ToDoApp.BusinessLogic.Controllers
             CurrentListId ++;
             return newToDoList;
         }
+        public bool AddNewItemToList(int ListId, string itemName)
+        {
+            foreach (var list in ToDoLists)
+            {
+                if (list.Id == ListId)
+                {
+                    var newItem = ToDoItemController.CreateNewToDoItem(itemName);
+                    list.ToDoItems.Add(newItem);
+                    return true;
+                }
+                
+            }
+            return false;
+        }
 
 
 

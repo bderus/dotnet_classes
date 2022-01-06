@@ -10,7 +10,6 @@ namespace ToDoApp.UI
 {
     internal static class ConsoleMenu
     {
-        private ToDoList ToDoList { get; set; }
         public static string PrintMainMenu()
         {
             Console.Clear();
@@ -43,12 +42,17 @@ namespace ToDoApp.UI
             Console.WriteLine("Below you can find your ToDo Lists");
 
             for(var i = 0; i < listCount; i++) 
-                Console.WriteLine($"{i+1}. {ToDoList.Name[i]}");
+                Console.WriteLine($"{i+1}. {toDoLists[i].Name}");
 
             Console.WriteLine($"{lastOption}. Back to Main Menu");
             Console.WriteLine($"Please select one of the options (1-{mainMenuOption}): ");
 
-            return GetUserAnswer(lastOption);
+            var userAnswer = int.Parse(GetUserAnswer(lastOption));
+
+            if (userAnswer == lastOption)
+                return mainMenuOption;
+
+            return toDoLists[userAnswer - 1].Id.ToString();
         }
 
         public static string PrintToDoItemsMenu(List<string> toDoItems)

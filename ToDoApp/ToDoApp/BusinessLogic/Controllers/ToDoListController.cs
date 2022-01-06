@@ -10,7 +10,7 @@ namespace ToDoApp.BusinessLogic.Controllers
     internal class ToDoListController
     {
         private int CurrentListId { get; set; }
-        private List<ToDoList> ToDoLists { get; set; }
+        public List<ToDoList> ToDoLists { get; set; }
         private ToDoItemController ToDoItemController { get; set; }
 
         public ToDoListController()

@@ -66,9 +66,9 @@ namespace ToDoApp.BusinessLogic
             if (userAnswer == mainMenuOption)
                 return;
          
-            var selectedListNumber = int.Parse(userAnswer);
+            var selectedListId = int.Parse(userAnswer);
 
-            ShowListItems(selectedListNumber);
+            ShowListItems(selectedListId);
         }
         private void AddNewToDoList()
         {

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoApp.Models;
+using ToDoApp.BusinessLogic.Controllers;
 
 namespace ToDoApp.UI
 {
     internal static class ConsoleMenu
     {
+        private ToDoList ToDoList { get; set; }
         public static string PrintMainMenu()
         {
             Console.Clear();
@@ -23,7 +26,7 @@ namespace ToDoApp.UI
             return GetUserAnswer(possibleOptions);
         }
 
-        public static string PrintToDoListsMenu(List<string> toDoLists)
+        public static string PrintToDoListsMenu(List<ToDoList> toDoLists)
         {
             Console.Clear();
 
@@ -40,7 +43,7 @@ namespace ToDoApp.UI
             Console.WriteLine("Below you can find your ToDo Lists");
 
             for(var i = 0; i < listCount; i++) 
-                Console.WriteLine($"{i+1}. {toDoLists[i]}");
+                Console.WriteLine($"{i+1}. {ToDoList.Name[i]}");
 
             Console.WriteLine($"{lastOption}. Back to Main Menu");
             Console.WriteLine($"Please select one of the options (1-{mainMenuOption}): ");

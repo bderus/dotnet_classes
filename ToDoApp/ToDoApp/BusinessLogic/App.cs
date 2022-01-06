@@ -59,9 +59,9 @@ namespace ToDoApp.BusinessLogic
 
         private void ShowToDoLists()
         {
-            var mainMenuOption = (ToDoLists.Count + 1).ToString();
+            var mainMenuOption = (ToDoListController.ToDoLists.Count + 1).ToString();
 
-            var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoLists);
+            var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoListController.ToDoLists);
 
             if (userAnswer == mainMenuOption)
                 return;

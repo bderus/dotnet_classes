@@ -12,12 +12,13 @@ namespace ToDoApp.UI
         {
             Console.Clear();
 
-            var possibleOptions = 2;
+            var possibleOptions = 3;
 
             Console.WriteLine("Welcome to ToDoApp!");
             Console.WriteLine("1. Show my ToDo Lists");
-            Console.WriteLine("2. Exit app");
-            Console.WriteLine("Please select one of the options (1-2): ");
+            Console.WriteLine("2. Add new ToDo Lists");
+            Console.WriteLine("3. Exit app");
+            Console.WriteLine("Please select one of the options (1-3): ");
 
             return GetUserAnswer(possibleOptions);
         }

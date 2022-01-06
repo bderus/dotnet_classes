@@ -55,21 +55,12 @@ namespace ToDoApp.BusinessLogic.Controllers
             {
                 if (list.Id == listId)
                 {
-
-                    return list.ToDoItems;
-
-                   
+                    return list.ToDoItems;              
                 }
-
             }
-
             var newList = new List<ToDoItem>();
 
             return newList;
-
-
         }
-
-
     }
 }

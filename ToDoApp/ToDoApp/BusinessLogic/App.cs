@@ -59,16 +59,16 @@ namespace ToDoApp.BusinessLogic
 
         private void ShowToDoLists()
         {
-            var mainMenuOption = (ToDoLists.Count + 1).ToString();
+            var mainMenuOption = (ToDoListController.ToDoLists.Count + 1).ToString();
 
-            var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoLists);
+            var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoListController.ToDoLists);
 
             if (userAnswer == mainMenuOption)
                 return;
          
-            var selectedListNumber = int.Parse(userAnswer);
+            var selectedListId = int.Parse(userAnswer);
 
-            ShowListItems(selectedListNumber);
+            ShowListItems(selectedListId);
         }
         private void AddNewToDoList()
         {

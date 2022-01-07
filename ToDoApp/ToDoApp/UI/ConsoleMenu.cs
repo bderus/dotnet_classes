@@ -55,7 +55,7 @@ namespace ToDoApp.UI
             return toDoLists[userAnswer - 1].Id.ToString();
         }
 
-        public static string PrintToDoItemsMenu(List<string> toDoItems)
+        public static string PrintToDoItemsMenu(List<ToDoItem> toDoItems)
         {
             Console.Clear();
 
@@ -65,11 +65,13 @@ namespace ToDoApp.UI
             {
                 Console.WriteLine($"[ ] {toDoItem}");
             }
+            Console.WriteLine("1. Add new ToDo Item");
+            Console.WriteLine("2. Back to Main Menu");
+            Console.WriteLine("Select one of the options: ");
 
-            Console.WriteLine("1. Back to Main Menu");
-            Console.WriteLine("Please type 1 to go back to Main Menu: ");
+            var possibleOptions = 2;
 
-            return GetUserAnswer(1);
+            return GetUserAnswer(possibleOptions);
         }
 
         private static string GetUserAnswer(int possibleOptions)

@@ -79,9 +79,9 @@ namespace ToDoApp.BusinessLogic
             ToDoListController.CreateNewToDoList(userAnswer);
         }
 
-        private void ShowListItems(int listNumber)
+        private void ShowListItems(int selectedListId)
         {
-            var itemsList = ToDoItemsDict[listNumber];
+            var itemsList = ToDoListController.GetListItems(selectedListId);
             var userAnswer = ConsoleMenu.PrintToDoItemsMenu(itemsList);
 
             if (userAnswer == "1")

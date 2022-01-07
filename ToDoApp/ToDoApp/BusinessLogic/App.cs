@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using ToDoApp.UI;
+using ToDoApp.Models;
+using ToDoApp.BusinessLogic.Controllers;
 
 namespace ToDoApp.BusinessLogic
 {
@@ -9,11 +11,13 @@ namespace ToDoApp.BusinessLogic
     {
         private List<string> ToDoLists { get; set; }
         private Dictionary<int, List<string>> ToDoItemsDict { get; set; }
+        private ToDoListController ToDoListController { get; set; }
 
         public App()
         {
             ToDoLists = new List<string>();
             ToDoItemsDict = new Dictionary<int, List<string>>();
+            ToDoListController = new ToDoListController();
         }
 
         public void StartApp()
@@ -42,30 +46,42 @@ namespace ToDoApp.BusinessLogic
             {
                 var userAnswer = ConsoleMenu.PrintMainMenu();
 
-                if (userAnswer == "2")
+                if (userAnswer == "3")
                     return;
 
-                ShowToDoLists();
+                if (userAnswer == "1")
+                    ShowToDoLists();
+
+                if (userAnswer == "2")
+                    AddNewToDoList();
             }
         }
 
         private void ShowToDoLists()
         {
-            var mainMenuOption = (ToDoLists.Count + 1).ToString();
+            var mainMenuOption = (ToDoListController.ToDoLists.Count + 1).ToString();
 
-            var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoLists);
+            var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoListController.ToDoLists);
 
             if (userAnswer == mainMenuOption)
                 return;
          
-            var selectedListNumber = int.Parse(userAnswer);
+            var selectedListId = int.Parse(userAnswer);
 
-            ShowListItems(selectedListNumber);
+            ShowListItems(selectedListId);
+        }
+        private void AddNewToDoList()
+        {
+            Console.WriteLine("Provide the name of the list: ");
+
+            var userAnswer = Console.ReadLine();
+
+            ToDoListController.CreateNewToDoList(userAnswer);
         }
 
-        private void ShowListItems(int listNumber)
+        private void ShowListItems(int selectedListId)
         {
-            var itemsList = ToDoItemsDict[listNumber];
+            var itemsList = ToDoListController.GetListItems(selectedListId);
             var userAnswer = ConsoleMenu.PrintToDoItemsMenu(itemsList);
 
             if (userAnswer == "1")

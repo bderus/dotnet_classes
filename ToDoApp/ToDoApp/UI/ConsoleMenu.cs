@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoApp.Models;
+using ToDoApp.BusinessLogic.Controllers;
 
 namespace ToDoApp.UI
 {
@@ -12,17 +14,18 @@ namespace ToDoApp.UI
         {
             Console.Clear();
 
-            var possibleOptions = 2;
+            var possibleOptions = 3;
 
             Console.WriteLine("Welcome to ToDoApp!");
             Console.WriteLine("1. Show my ToDo Lists");
-            Console.WriteLine("2. Exit app");
-            Console.WriteLine("Please select one of the options (1-2): ");
+            Console.WriteLine("2. Add new ToDo Lists");
+            Console.WriteLine("3. Exit app");
+            Console.WriteLine("Please select one of the options (1-3): ");
 
             return GetUserAnswer(possibleOptions);
         }
 
-        public static string PrintToDoListsMenu(List<string> toDoLists)
+        public static string PrintToDoListsMenu(List<ToDoList> toDoLists)
         {
             Console.Clear();
 
@@ -39,15 +42,20 @@ namespace ToDoApp.UI
             Console.WriteLine("Below you can find your ToDo Lists");
 
             for(var i = 0; i < listCount; i++) 
-                Console.WriteLine($"{i+1}. {toDoLists[i]}");
+                Console.WriteLine($"{i+1}. {toDoLists[i].Name}");
 
             Console.WriteLine($"{lastOption}. Back to Main Menu");
             Console.WriteLine($"Please select one of the options (1-{mainMenuOption}): ");
 
-            return GetUserAnswer(lastOption);
+            var userAnswer = int.Parse(GetUserAnswer(lastOption));
+
+            if (userAnswer == lastOption)
+                return mainMenuOption;
+
+            return toDoLists[userAnswer - 1].Id.ToString();
         }
 
-        public static string PrintToDoItemsMenu(List<string> toDoItems)
+        public static string PrintToDoItemsMenu(List<ToDoItem> toDoItems)
         {
             Console.Clear();
 
@@ -57,11 +65,13 @@ namespace ToDoApp.UI
             {
                 Console.WriteLine($"[ ] {toDoItem}");
             }
+            Console.WriteLine("1. Add new ToDo Item");
+            Console.WriteLine("2. Back to Main Menu");
+            Console.WriteLine("Select one of the options: ");
 
-            Console.WriteLine("1. Back to Main Menu");
-            Console.WriteLine("Please type 1 to go back to Main Menu: ");
+            var possibleOptions = 2;
 
-            return GetUserAnswer(1);
+            return GetUserAnswer(possibleOptions);
         }
 
         private static string GetUserAnswer(int possibleOptions)

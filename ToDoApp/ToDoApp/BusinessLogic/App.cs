@@ -53,7 +53,7 @@ namespace ToDoApp.BusinessLogic
                     ShowToDoLists();
 
                 if (userAnswer == "2")
-                    AddNewToDoList();
+                    AddNewListToDoList();
             }
         }
 
@@ -70,7 +70,7 @@ namespace ToDoApp.BusinessLogic
 
             ShowListItems(selectedListId);
         }
-        private void AddNewToDoList()
+        private void AddNewListToDoList()
         {
             Console.WriteLine("Provide the name of the list: ");
 
@@ -78,14 +78,24 @@ namespace ToDoApp.BusinessLogic
 
             ToDoListController.CreateNewToDoList(userAnswer);
         }
-
         private void ShowListItems(int selectedListId)
         {
             var itemsList = ToDoListController.GetListItems(selectedListId);
             var userAnswer = ConsoleMenu.PrintToDoItemsMenu(itemsList);
 
             if (userAnswer == "1")
+                AddNewItemToDoList(selectedListId);
+
+            if (userAnswer == "2")
                 return;
+        }
+        private void AddNewItemToDoList(int selectedListId)
+        {
+            Console.WriteLine("Provide the name of the item: ");
+
+            var userAnswer = Console.ReadLine();
+
+            ToDoListController.AddNewItemToList(selectedListId, userAnswer);
         }
     }
 }

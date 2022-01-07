@@ -63,7 +63,7 @@ namespace ToDoApp.UI
 
             foreach (var toDoItem in toDoItems)
             {
-                Console.WriteLine($"[ ] {toDoItem}");
+                Console.WriteLine($"[ ] {toDoItem.Name}");
             }
             Console.WriteLine("1. Add new ToDo Item");
             Console.WriteLine("2. Back to Main Menu");

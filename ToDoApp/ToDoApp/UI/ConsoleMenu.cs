@@ -33,13 +33,12 @@ namespace ToDoApp.UI
             var lastOption = listCount + 1;
             var mainMenuOption = lastOption.ToString();
 
-            if (listCount == 0){
-                Console.WriteLine("You don't have any list!");
-
-                return mainMenuOption;
-            }
-
             Console.WriteLine("Below you can find your ToDo Lists");
+
+            if (listCount == 0)
+            {
+                Console.WriteLine("You don't have any list!");   
+            }
 
             for(var i = 0; i < listCount; i++) 
                 Console.WriteLine($"{i+1}. {toDoLists[i].Name}");

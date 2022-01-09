@@ -48,6 +48,7 @@ namespace ToDoApp.BusinessLogic
             var selectedListId = int.Parse(userAnswer);
 
             ShowListItems(selectedListId);
+  
         }
         private void AddNewListToDoList()
         {
@@ -56,6 +57,7 @@ namespace ToDoApp.BusinessLogic
             var userAnswer = Console.ReadLine();
 
             ToDoListController.CreateNewToDoList(userAnswer);
+            ShowToDoLists();
         }
         private void ShowListItems(int selectedListId)
         {
@@ -75,6 +77,8 @@ namespace ToDoApp.BusinessLogic
             var userAnswer = Console.ReadLine();
 
             ToDoListController.AddNewItemToList(selectedListId, userAnswer);
+            ShowListItems(selectedListId);
+            
         }
     }
 }

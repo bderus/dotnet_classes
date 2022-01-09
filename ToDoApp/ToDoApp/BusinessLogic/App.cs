@@ -68,6 +68,9 @@ namespace ToDoApp.BusinessLogic
                 AddNewItemToDoList(selectedListId);
 
             if (userAnswer == "2")
+                ShowToDoLists();
+
+            if (userAnswer == "3")
                 return;
         }
         private void AddNewItemToDoList(int selectedListId)

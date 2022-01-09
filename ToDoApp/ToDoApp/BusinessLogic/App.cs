@@ -9,37 +9,17 @@ namespace ToDoApp.BusinessLogic
 {
     internal class App
     {
-        private List<string> ToDoLists { get; set; }
-        private Dictionary<int, List<string>> ToDoItemsDict { get; set; }
         private ToDoListController ToDoListController { get; set; }
 
         public App()
         {
-            ToDoLists = new List<string>();
-            ToDoItemsDict = new Dictionary<int, List<string>>();
             ToDoListController = new ToDoListController();
         }
 
         public void StartApp()
         {
-            AddTestItems();
             MainMenu();
         }
-
-        private void AddTestItems()
-        {
-            for (var i = 1; i <= 3; i++)
-            {
-                var listName = $"Lista #{i}";
-                ToDoLists.Add(listName);
-
-                var toDoItems = new List<string> { $"{listName} - Item #1", $"{listName} - Item #2", $"{listName} - Item #3" };
-
-                ToDoItemsDict.Add(i, toDoItems);
-
-            }
-        }
-
         private void MainMenu()
         {
             while (true)
@@ -56,7 +36,6 @@ namespace ToDoApp.BusinessLogic
                     AddNewListToDoList();
             }
         }
-
         private void ShowToDoLists()
         {
             var mainMenuOption = (ToDoListController.ToDoLists.Count + 1).ToString();

@@ -5,6 +5,7 @@ using ToDoApp.UI;
 using ToDoApp.Models;
 using ToDoApp.BusinessLogic.Controllers;
 
+
 namespace ToDoApp.BusinessLogic
 {
     internal class App
@@ -38,12 +39,23 @@ namespace ToDoApp.BusinessLogic
         }
         private void ShowToDoLists()
         {
-            var mainMenuOption = (ToDoListController.ToDoLists.Count + 1).ToString();
+            var mainMenuOption = (ToDoListController.ToDoLists.Count + 3).ToString();
+            var removeOption = (ToDoListController.ToDoLists.Count + 2).ToString();
+            var addOption = (ToDoListController.ToDoLists.Count + 1).ToString();
 
             var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoListController.ToDoLists);
 
+            if (userAnswer == addOption)
+                AddNewListToDoList();
+                return;
+
             if (userAnswer == mainMenuOption)
                 return;
+            if (userAnswer == removeOption)
+                RemoveSelectedList(int.Parse(userAnswer));
+                ShowToDoLists();
+                return;
+
          
             var selectedListId = int.Parse(userAnswer);
 
@@ -58,6 +70,22 @@ namespace ToDoApp.BusinessLogic
 
             ToDoListController.CreateNewToDoList(userAnswer);
             ShowToDoLists();
+        }
+  
+        public bool RemoveSelectedList(int selectedListId)
+        {
+            Console.WriteLine("Provide List number to Remove: ");
+
+            selectedListId = int.Parse(Console.ReadLine());     
+
+            foreach(var list in ToDoListController.ToDoLists)
+            {
+                if(list.Id == selectedListId)
+                    ToDoListController.ToDoLists.Remove(list);
+                    
+                    return true;
+            }
+            return false;
         }
         private void ShowListItems(int selectedListId)
         {

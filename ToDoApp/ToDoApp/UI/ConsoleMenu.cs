@@ -80,11 +80,12 @@ namespace ToDoApp.UI
                 Console.WriteLine($"[ ] {toDoItem.Name}");
             }
             Console.WriteLine("1. Add new ToDo Item");
-            Console.WriteLine("2. Back to Show My ToDoList");
-            Console.WriteLine("3. Back to Main Menu");            
+            Console.WriteLine("2. Remove selected ToDo Item");
+            Console.WriteLine("3. Back to Show My ToDoList");
+            Console.WriteLine("4. Back to Main Menu");            
             Console.WriteLine("Select one of the options: ");
 
-            var possibleOptions = 3;
+            var possibleOptions = 4;
 
             return GetUserAnswer(possibleOptions);
         }

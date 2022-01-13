@@ -112,9 +112,12 @@ namespace ToDoApp.BusinessLogic
                 AddNewItemToDoList(selectedListId);
 
             if (userAnswer == "2")
-                ShowToDoLists();
+                ToDoListController.RemoveSelectedToDoItem(selectedListId);
 
             if (userAnswer == "3")
+                ShowToDoLists();
+
+            if (userAnswer == "4")
                 return;
         }
         private void AddNewItemToDoList(int selectedListId)

@@ -11,6 +11,7 @@ namespace ToDoApp.BusinessLogic.Controllers
     {
         private int CurrentListId { get; set; }
         public List<ToDoList> ToDoLists { get; set; }
+        public ToDoList ToDoList { get; set; }
         private ToDoItemController ToDoItemController { get; set; }
 
         public ToDoListController()
@@ -37,6 +38,7 @@ namespace ToDoApp.BusinessLogic.Controllers
       
         public bool AddNewItemToList(int listId, string itemName)
         {
+
             foreach (var list in ToDoLists)
             {
                 if (list.Id == listId)
@@ -46,6 +48,29 @@ namespace ToDoApp.BusinessLogic.Controllers
                     return true;
                 }
                 
+            }
+            return false;
+        }
+
+        public bool RemoveSelectedToDoItem(int selectedListId)
+        {
+            Console.WriteLine("Provide Item number to remove: ");
+
+            foreach (var list in ToDoLists)
+            {
+                if (selectedListId == list.Id)
+                    try
+                    {
+                        var selectedItemIndex = int.Parse(Console.ReadLine()) - 1;
+                        var removeItem = ToDoList.ToDoItems[selectedItemIndex];
+                        ToDoList.ToDoItems.Remove(removeItem);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Zły indeks " + ex.Message);
+                    }
+                Console.ReadKey();
+                return true;
             }
             return false;
         }

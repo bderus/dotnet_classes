@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Models
 {
-    internal class ToDoItem
+    public class ToDoItem
     {
         public int Id { get; set; }
         public string Name { get; set; }

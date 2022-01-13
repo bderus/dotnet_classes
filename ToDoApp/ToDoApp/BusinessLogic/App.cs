@@ -4,7 +4,7 @@ using System.Linq;
 using ToDoApp.UI;
 using ToDoApp.Models;
 using ToDoApp.BusinessLogic.Controllers;
-
+using System.Threading;
 
 namespace ToDoApp.BusinessLogic
 {
@@ -46,15 +46,22 @@ namespace ToDoApp.BusinessLogic
             var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoListController.ToDoLists);
 
             if (userAnswer == addOption)
+            {
                 AddNewListToDoList();
                 return;
+            }
+
+            if (userAnswer == removeOption)
+            {
+                RemoveSelectedList();
+                ShowToDoLists();
+                return;
+            }
+                
 
             if (userAnswer == mainMenuOption)
                 return;
-            if (userAnswer == removeOption)
-                RemoveSelectedList(int.Parse(userAnswer));
-                ShowToDoLists();
-                return;
+
 
          
             var selectedListId = int.Parse(userAnswer);
@@ -72,20 +79,29 @@ namespace ToDoApp.BusinessLogic
             ShowToDoLists();
         }
   
-        public bool RemoveSelectedList(int selectedListId)
+        public bool RemoveSelectedList()
         {
+            
             Console.WriteLine("Provide List number to Remove: ");
-
-            selectedListId = int.Parse(Console.ReadLine());     
-
-            foreach(var list in ToDoListController.ToDoLists)
+            
+            try
             {
-                if(list.Id == selectedListId)
-                    ToDoListController.ToDoLists.Remove(list);
-                    
-                    return true;
+                var selectedListIndex = int.Parse(Console.ReadLine()) - 1;
+                var itemToRemove = ToDoListController.ToDoLists[selectedListIndex];
+                ToDoListController.ToDoLists.Remove(itemToRemove);
+               
             }
-            return false;
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Zły indeks " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wpisz liczbę " + ex.Message);
+            }
+            Console.ReadKey();
+           
+            return true;
         }
         private void ShowListItems(int selectedListId)
         {

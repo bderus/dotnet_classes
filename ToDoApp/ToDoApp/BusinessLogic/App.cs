@@ -48,6 +48,7 @@ namespace ToDoApp.BusinessLogic
             var selectedListId = int.Parse(userAnswer);
 
             ShowListItems(selectedListId);
+  
         }
         private void AddNewListToDoList()
         {
@@ -56,6 +57,7 @@ namespace ToDoApp.BusinessLogic
             var userAnswer = Console.ReadLine();
 
             ToDoListController.CreateNewToDoList(userAnswer);
+            ShowToDoLists();
         }
         private void ShowListItems(int selectedListId)
         {
@@ -66,6 +68,9 @@ namespace ToDoApp.BusinessLogic
                 AddNewItemToDoList(selectedListId);
 
             if (userAnswer == "2")
+                ShowToDoLists();
+
+            if (userAnswer == "3")
                 return;
         }
         private void AddNewItemToDoList(int selectedListId)
@@ -75,6 +80,8 @@ namespace ToDoApp.BusinessLogic
             var userAnswer = Console.ReadLine();
 
             ToDoListController.AddNewItemToList(selectedListId, userAnswer);
+            ShowListItems(selectedListId);
+            
         }
     }
 }

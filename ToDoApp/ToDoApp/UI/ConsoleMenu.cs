@@ -33,13 +33,12 @@ namespace ToDoApp.UI
             var lastOption = listCount + 1;
             var mainMenuOption = lastOption.ToString();
 
-            if (listCount == 0){
-                Console.WriteLine("You don't have any list!");
-
-                return mainMenuOption;
-            }
-
             Console.WriteLine("Below you can find your ToDo Lists");
+
+            if (listCount == 0)
+            {
+                Console.WriteLine("You don't have any list!");   
+            }
 
             for(var i = 0; i < listCount; i++) 
                 Console.WriteLine($"{i+1}. {toDoLists[i].Name}");
@@ -66,10 +65,11 @@ namespace ToDoApp.UI
                 Console.WriteLine($"[ ] {toDoItem.Name}");
             }
             Console.WriteLine("1. Add new ToDo Item");
-            Console.WriteLine("2. Back to Main Menu");
+            Console.WriteLine("2. Back to Show My ToDoList");
+            Console.WriteLine("3. Back to Main Menu");
             Console.WriteLine("Select one of the options: ");
 
-            var possibleOptions = 2;
+            var possibleOptions = 3;
 
             return GetUserAnswer(possibleOptions);
         }

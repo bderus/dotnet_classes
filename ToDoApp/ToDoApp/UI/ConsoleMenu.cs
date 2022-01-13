@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.Models;
 using ToDoApp.BusinessLogic.Controllers;
+using ToDoApp.BusinessLogic;
 
 namespace ToDoApp.UI
 {
     internal static class ConsoleMenu
     {
+
+
         public static string PrintMainMenu()
+       
         {
             Console.Clear();
 
@@ -18,9 +22,9 @@ namespace ToDoApp.UI
 
             Console.WriteLine("Welcome to ToDoApp!");
             Console.WriteLine("1. Show my ToDo Lists");
-            Console.WriteLine("2. Add new ToDo Lists");
+            Console.WriteLine("2. Add new ToDo Lists");            
             Console.WriteLine("3. Exit app");
-            Console.WriteLine("Please select one of the options (1-3): ");
+            Console.WriteLine("Please select one of the options (1-4): ");
 
             return GetUserAnswer(possibleOptions);
         }
@@ -30,7 +34,11 @@ namespace ToDoApp.UI
             Console.Clear();
 
             var listCount = toDoLists.Count;
-            var lastOption = listCount + 1;
+            var beforePenultimateOption = listCount + 1;
+            var addOption = beforePenultimateOption.ToString();
+            var penultimateOption = listCount + 2;
+            var removeOption = penultimateOption.ToString();
+            var lastOption = listCount + 3;            
             var mainMenuOption = lastOption.ToString();
 
             Console.WriteLine("Below you can find your ToDo Lists");
@@ -42,7 +50,8 @@ namespace ToDoApp.UI
 
             for(var i = 0; i < listCount; i++) 
                 Console.WriteLine($"{i+1}. {toDoLists[i].Name}");
-
+            Console.WriteLine($"{beforePenultimateOption}. Add New ToDo List");
+            Console.WriteLine($"{penultimateOption}. Remove Selected ToDo List");
             Console.WriteLine($"{lastOption}. Back to Main Menu");
             Console.WriteLine($"Please select one of the options (1-{mainMenuOption}): ");
 
@@ -50,6 +59,12 @@ namespace ToDoApp.UI
 
             if (userAnswer == lastOption)
                 return mainMenuOption;
+
+            if (userAnswer == penultimateOption)
+                return removeOption;
+
+            if (userAnswer == beforePenultimateOption)
+                return addOption;                
 
             return toDoLists[userAnswer - 1].Id.ToString();
         }
@@ -66,7 +81,7 @@ namespace ToDoApp.UI
             }
             Console.WriteLine("1. Add new ToDo Item");
             Console.WriteLine("2. Back to Show My ToDoList");
-            Console.WriteLine("3. Back to Main Menu");
+            Console.WriteLine("3. Back to Main Menu");            
             Console.WriteLine("Select one of the options: ");
 
             var possibleOptions = 3;

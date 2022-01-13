@@ -4,6 +4,7 @@ using System.Linq;
 using ToDoApp.UI;
 using ToDoApp.Models;
 using ToDoApp.BusinessLogic.Controllers;
+using System.Threading;
 
 namespace ToDoApp.BusinessLogic
 {
@@ -38,12 +39,30 @@ namespace ToDoApp.BusinessLogic
         }
         private void ShowToDoLists()
         {
-            var mainMenuOption = (ToDoListController.ToDoLists.Count + 1).ToString();
+            var mainMenuOption = (ToDoListController.ToDoLists.Count + 3).ToString();
+            var removeOption = (ToDoListController.ToDoLists.Count + 2).ToString();
+            var addOption = (ToDoListController.ToDoLists.Count + 1).ToString();
 
             var userAnswer = ConsoleMenu.PrintToDoListsMenu(ToDoListController.ToDoLists);
 
+            if (userAnswer == addOption)
+            {
+                AddNewListToDoList();
+                return;
+            }
+
+            if (userAnswer == removeOption)
+            {
+                RemoveSelectedList();
+                ShowToDoLists();
+                return;
+            }
+                
+
             if (userAnswer == mainMenuOption)
                 return;
+
+
          
             var selectedListId = int.Parse(userAnswer);
 
@@ -58,6 +77,31 @@ namespace ToDoApp.BusinessLogic
 
             ToDoListController.CreateNewToDoList(userAnswer);
             ShowToDoLists();
+        }
+  
+        public bool RemoveSelectedList()
+        {
+            
+            Console.WriteLine("Provide List number to Remove: ");
+            
+            try
+            {
+                var selectedListIndex = int.Parse(Console.ReadLine()) - 1;
+                var itemToRemove = ToDoListController.ToDoLists[selectedListIndex];
+                ToDoListController.ToDoLists.Remove(itemToRemove);
+               
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Zły indeks " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wpisz liczbę " + ex.Message);
+            }
+            Console.ReadKey();
+           
+            return true;
         }
         private void ShowListItems(int selectedListId)
         {

@@ -59,5 +59,36 @@ namespace ToDoApp.Tests
             //Assert
             Assert.IsInstanceOfType(actualListItem.ToDoItems, typeof(List<ToDoItem>));
         }
+
+
+
+
+        [TestMethod]
+        public void AddNewItemToList_ShouldBeTypeOfBool()
+        {
+            //Arrange & Act
+            var actualItem = _testListController.AddNewItemToList(0, null);
+
+            //Assert
+            Assert.IsInstanceOfType(actualItem, typeof(bool));
+        }
+
+        [TestMethod]
+
+        public void AddNewItemToList_ShouldBeAddedToList()
+        {
+            //Arrange
+            var expectedId = 1;
+            _testListController.CreateNewToDoList(null);
+
+            //Act
+            var actualItem = _testListController.AddNewItemToList(expectedId, null);
+
+            //Assert
+            Assert.IsTrue(actualItem);
+
+        }
+
+
     }
 }

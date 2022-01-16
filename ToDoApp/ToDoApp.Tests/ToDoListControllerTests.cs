@@ -7,7 +7,7 @@ namespace ToDoApp.Tests
 {
     [TestClass]
     public class ToDoListControllerTests
-      
+
     {
         private readonly ToDoListController _testListController = new ToDoListController();
 
@@ -17,7 +17,7 @@ namespace ToDoApp.Tests
         {
             //Arrange & Act
             var actualList = _testListController.CreateNewToDoList(null);
-      
+
             //Assert
 
             Assert.IsInstanceOfType(actualList, typeof(ToDoList));
@@ -88,7 +88,18 @@ namespace ToDoApp.Tests
             Assert.IsTrue(actualItem);
 
         }
+        [TestMethod]
 
+        public void AddNewItemToList_ShouldReturnFalse()
+        {
+            //Arrange
+            var expectedId = 1;
 
+            //Act
+            var actualItem = _testListController.AddNewItemToList(expectedId, null);
+
+            //Assert
+            Assert.IsFalse(actualItem);
+        }
     }
 }

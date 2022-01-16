@@ -101,5 +101,34 @@ namespace ToDoApp.Tests
             //Assert
             Assert.IsFalse(actualItem);
         }
+        [TestMethod]
+
+        public void GetListItems_SholudBeGet()
+        {
+
+            //Arrange
+            var expectedId = 1;
+            _testListController.CreateNewToDoList(null);
+            //Act
+            var actualItem = _testListController.GetListItems(expectedId);
+
+            //Assert
+            Assert.IsInstanceOfType(actualItem, typeof(List<ToDoItem>));
+
+        }
+        [TestMethod]
+
+        public void GetListItems_SholudBeReturnEmptyList()
+        {
+
+            //Arrange
+            var expectedId = 1;
+
+            //Act
+            var actualItem = _testListController.GetListItems(expectedId);
+
+            //Assert
+            Assert.IsInstanceOfType(actualItem, typeof(List<ToDoItem>));
+        }
     }
 }

@@ -60,8 +60,22 @@ namespace ToDoApp.Tests
             Assert.IsInstanceOfType(actualListItem.ToDoItems, typeof(List<ToDoItem>));
         }
 
+        [TestMethod]
+        public void CreateNewToDoList_ToDoList_ShouldBeAddedToProperty_ToDoLists()
+        {
+            //Arrange
+            var expectedListId = 1;
+            var expectedListName = "lista1";
+            _testListController.CreateNewToDoList(expectedListName);
 
+            //Act
+            var actualList = _testListController.ToDoLists[0];
 
+            //Assert
+            Assert.AreEqual(expectedListId, actualList.Id);
+            Assert.AreEqual(expectedListName, actualList.Name);
+
+        }
 
         [TestMethod]
         public void AddNewItemToList_ShouldBeTypeOfBool()
@@ -79,13 +93,17 @@ namespace ToDoApp.Tests
         {
             //Arrange
             var expectedId = 1;
+            var expectedItemName = "item1";
             _testListController.CreateNewToDoList(null);
+            _testListController.AddNewItemToList(expectedId, expectedItemName);
+            var listItems = _testListController.ToDoLists[0].ToDoItems;
 
             //Act
-            var actualItem = _testListController.AddNewItemToList(expectedId, null);
+            var actualItem = listItems[0];
 
             //Assert
-            Assert.IsTrue(actualItem);
+            Assert.AreEqual(expectedId, actualItem.Id);
+            Assert.AreEqual(expectedItemName, actualItem.Name);
 
         }
 

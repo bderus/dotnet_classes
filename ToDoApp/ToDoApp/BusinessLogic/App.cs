@@ -112,9 +112,12 @@ namespace ToDoApp.BusinessLogic
                 AddNewItemToDoList(selectedListId);
 
             if (userAnswer == "2")
-                ShowToDoLists();
+                RemoveSelectedToDoItem(selectedListId);
 
             if (userAnswer == "3")
+                ShowToDoLists();
+
+            if (userAnswer == "4")
                 return;
         }
         private void AddNewItemToDoList(int selectedListId)
@@ -125,7 +128,16 @@ namespace ToDoApp.BusinessLogic
 
             ToDoListController.AddNewItemToList(selectedListId, userAnswer);
             ShowListItems(selectedListId);
-            
+        }
+        private void RemoveSelectedToDoItem(int selectedListId)
+        {
+            Console.WriteLine("Provide the item number to remove: ");
+
+            var userAnswer = int.Parse(Console.ReadLine());
+            var selectedIndexItem = --userAnswer;
+
+            ToDoListController.RemoveSelectedItem(selectedListId, selectedIndexItem);
+            ShowListItems(selectedListId);
         }
     }
 }

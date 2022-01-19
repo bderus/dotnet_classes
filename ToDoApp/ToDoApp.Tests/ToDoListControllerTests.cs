@@ -81,10 +81,10 @@ namespace ToDoApp.Tests
         public void AddNewItemToList_ShouldBeTypeOfBool()
         {
             //Arrange & Act
-            var actualItem = _testListController.AddNewItemToList(0, null);
+            var actualtype = _testListController.AddNewItemToList(0, null);
 
             //Assert
-            Assert.IsInstanceOfType(actualItem, typeof(bool));
+            Assert.IsInstanceOfType(actualtype, typeof(bool));
         }
 
         [TestMethod]
@@ -108,20 +108,20 @@ namespace ToDoApp.Tests
         }
         [TestMethod]
 
-        public void AddNewItemToList_ShouldReturnFalse()
+        public void AddNewItemToList_IfListWasNotFound_ShouldReturnFalse()
         {
             //Arrange
             var expectedId = 1;
 
             //Act
-            var actualItem = _testListController.AddNewItemToList(expectedId, null);
+            var addItem = _testListController.AddNewItemToList(expectedId, null);
 
             //Assert
-            Assert.IsFalse(actualItem);
+            Assert.IsFalse(addItem);
         }
         [TestMethod]
 
-        public void GetListItems_SholudBeGet()
+        public void GetListItems_ShouldBeGet()
         {
 
             //Arrange
@@ -136,17 +136,18 @@ namespace ToDoApp.Tests
         }
         [TestMethod]
 
-        public void GetListItems_SholudBeReturnEmptyList()
+        public void GetListItems_ShouldBeReturnEmptyList()
         {
 
             //Arrange
-            var expectedId = 1;
+            var expectedListCount = 0;
+            var newList = _testListController.CreateNewToDoList(null);
 
             //Act
-            var actualItem = _testListController.GetListItems(expectedId);
+            var ListsCount = newList.ToDoItems.Count;
 
             //Assert
-            Assert.IsInstanceOfType(actualItem, typeof(List<ToDoItem>));
+            Assert.AreEqual(expectedListCount, ListsCount);
         }
     }
 }

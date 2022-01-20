@@ -144,10 +144,26 @@ namespace ToDoApp.Tests
             var newList = _testListController.CreateNewToDoList(null);
 
             //Act
-            var ListsCount = newList.ToDoItems.Count;
+            var listsCount = newList.ToDoItems.Count;
 
             //Assert
-            Assert.AreEqual(expectedListCount, ListsCount);
+            Assert.AreEqual(expectedListCount, listsCount);
+        }
+        [TestMethod]
+
+        public void RemoveSelectedItem_ItemShouldBeRemoved()
+        {
+            //Arrange
+            var expectedListCount = 0;
+            var newList = _testListController.CreateNewToDoList(null);
+            var newItem = _testListController.AddNewItemToList(1, null);
+            var removeItem = newList.ToDoItems[0];
+            //Act
+            newList.ToDoItems.Remove(removeItem);
+            var listCount = newList.ToDoItems.Count;
+
+            //Assert
+            Assert.AreEqual(expectedListCount, listCount);
         }
     }
 }

@@ -7,7 +7,7 @@ using ToDoApp.Models;
 
 namespace ToDoApp.BusinessLogic.Controllers
 {
-    internal class ToDoListController
+    public class ToDoListController
     {
         private int CurrentListId { get; set; }
         public List<ToDoList> ToDoLists { get; set; }

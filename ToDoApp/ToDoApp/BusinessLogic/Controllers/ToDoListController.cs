@@ -7,7 +7,7 @@ using ToDoApp.Models;
 
 namespace ToDoApp.BusinessLogic.Controllers
 {
-    internal class ToDoListController
+    public class ToDoListController
     {
         private int CurrentListId { get; set; }
         public List<ToDoList> ToDoLists { get; set; }
@@ -34,8 +34,10 @@ namespace ToDoApp.BusinessLogic.Controllers
             CurrentListId ++;
             return newToDoList;
         }
+      
         public bool AddNewItemToList(int listId, string itemName)
         {
+
             foreach (var list in ToDoLists)
             {
                 if (list.Id == listId)
@@ -45,6 +47,21 @@ namespace ToDoApp.BusinessLogic.Controllers
                     return true;
                 }
                 
+            }
+            return false;
+        }
+
+        public bool RemoveSelectedItem(int selectedListId, int selectedItemIndex)
+        {
+            foreach (var list in ToDoLists)
+            {
+                if (selectedListId == list.Id)
+                {
+                    var removeItem = list.ToDoItems[selectedItemIndex];
+                    list.ToDoItems.Remove(removeItem);
+                    return true;
+                }
+
             }
             return false;
         }

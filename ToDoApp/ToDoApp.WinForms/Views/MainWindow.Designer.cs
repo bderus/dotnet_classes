@@ -69,6 +69,7 @@
             this.listContainer.Name = "listContainer";
             this.listContainer.Size = new System.Drawing.Size(231, 324);
             this.listContainer.TabIndex = 6;
+            this.listContainer.MouseDoubleClick += listContainer_MouseDoubleClick;
             // 
             // MainWindow
             // 

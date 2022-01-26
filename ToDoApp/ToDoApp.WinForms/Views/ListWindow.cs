@@ -8,23 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToDoApp.BusinessLogic.Controllers;
+using ToDoApp.Models;
 
 namespace ToDoApp.WinForms.Views
 {
     public partial class ListWindow : Form
     {
-        private ToDoItemController _itemController { get; set; }
-        public ListWindow()
+        private ToDoListController _listController { get; set; }
+        private ToDoList _currentList { get; set; }
+
+        public ListWindow(ToDoList currentList, ToDoListController currentController)
         {
             InitializeComponent();
-            _itemController = new ToDoItemController();
+            _listController = currentController;
+            _currentList = currentList;
+            
+            RefreshItemsList();
+        }
+
+        private void RefreshItemsList()
+        {
+            itemContainer.DataSource = null;
+            itemContainer.DataSource = _currentList.ToDoItems;
+            itemContainer.DisplayMember = "Name";
+            itemContainer.ValueMember = "Id";
+
         }
 
         private void newItem_Click(object sender, EventArgs e)
         {
             var itemName = textBox1.Text;
-            var newItem = _itemController.CreateNewToDoItem(itemName);
-            itemContainer.Items.Add(newItem.Name);
+            _listController.AddNewItemToList(_currentList.Id, itemName);
+            RefreshItemsList();
         }
     }
 }

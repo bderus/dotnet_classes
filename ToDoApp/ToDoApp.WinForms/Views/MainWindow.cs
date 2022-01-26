@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ToDoApp.BusinessLogic.Controllers;
+using ToDoApp.Models;
 
 namespace ToDoApp.WinForms.Views
 {
@@ -21,7 +22,7 @@ namespace ToDoApp.WinForms.Views
             if (listName.Length >= 3)
             {
                 var newList = _listController.CreateNewToDoList(listName);
-                listContainer.Items.Add(newList.Name);
+                listContainer.Items.Add(newList);
             }
             else
             {
@@ -45,19 +46,31 @@ namespace ToDoApp.WinForms.Views
         private void OpenSelectedList(object sender, EventArgs e)
         {
  
-            for (int i = 0; i < listContainer.Items.Count; i++)
-            {
-                if (listContainer.GetSelected(i) == true)
-                {
-                    ListWindow listWindow = new ListWindow();
-                    listWindow.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Nie zaznaczono żadnej listy ");
-                }
-            }
-            MessageBox.Show("Nie utworzono żadnej listy ");
+            //for (int i = 0; i < listContainer.Items.Count; i++)
+            //{
+            //    if (listContainer.GetSelected(i) == true)
+            //    {
+            //        ListWindow listWindow = new ListWindow();
+            //        listWindow.ShowDialog();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Nie zaznaczono żadnej listy ");
+            //    }
+            //}
+            //MessageBox.Show("Nie utworzono żadnej listy ");
+        }
+
+        void listContainer_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var index = listContainer.IndexFromPoint(e.Location);
+            
+            if (index == ListBox.NoMatches) 
+                return;
+
+            var selectedList = listContainer.Items[index] as ToDoList;
+            ListWindow listWindow = new ListWindow(selectedList, _listController);
+            listWindow.ShowDialog();
         }
 
     }

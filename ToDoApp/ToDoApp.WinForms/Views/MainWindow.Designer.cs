@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.nowaLista = new System.Windows.Forms.Button();
-            this.listContainer = new System.Windows.Forms.ListBox();
-            this.nowyItem = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.openList = new System.Windows.Forms.Button();
+            this.listContainer = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // nowaLista
@@ -44,40 +44,40 @@
             this.nowaLista.UseVisualStyleBackColor = true;
             this.nowaLista.Click += new System.EventHandler(this.newList_Click);
             // 
-            // listContainer
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(457, 51);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(227, 27);
+            this.textBox1.TabIndex = 4;
+            // 
+            // openList
+            // 
+            this.openList.Location = new System.Drawing.Point(235, 222);
+            this.openList.Name = "openList";
+            this.openList.Size = new System.Drawing.Size(185, 74);
+            this.openList.TabIndex = 5;
+            this.openList.Text = "Open Selected List";
+            this.openList.UseVisualStyleBackColor = true;
+            this.openList.Click += new System.EventHandler(this.OpenSelectedList);
+            // 
+            // listBox1
             // 
             this.listContainer.FormattingEnabled = true;
             this.listContainer.ItemHeight = 20;
-            this.listContainer.Location = new System.Drawing.Point(457, 222);
+            this.listContainer.Location = new System.Drawing.Point(453, 213);
             this.listContainer.Name = "listContainer";
-            this.listContainer.Size = new System.Drawing.Size(227, 324);
-            this.listContainer.TabIndex = 2;
-            // 
-            // nowyItem
-            // 
-            this.nowyItem.Location = new System.Drawing.Point(88, 94);
-            this.nowyItem.Name = "nowyItem";
-            this.nowyItem.Size = new System.Drawing.Size(219, 102);
-            this.nowyItem.TabIndex = 3;
-            this.nowyItem.Text = "nowyItem";
-            this.nowyItem.UseVisualStyleBackColor = true;
-            this.nowyItem.Click += new System.EventHandler(this.newItem_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(88, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 27);
-            this.textBox1.TabIndex = 4;
+            this.listContainer.Size = new System.Drawing.Size(231, 324);
+            this.listContainer.TabIndex = 6;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.nowyItem);
             this.Controls.Add(this.listContainer);
+            this.Controls.Add(this.openList);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.nowaLista);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainWindow";
@@ -89,10 +89,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button newItem;
         private System.Windows.Forms.Button nowaLista;
-        private System.Windows.Forms.ListBox listContainer;
-        private System.Windows.Forms.Button nowyItem;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button openList;
+        private System.Windows.Forms.ListBox listContainer;
     }
 }

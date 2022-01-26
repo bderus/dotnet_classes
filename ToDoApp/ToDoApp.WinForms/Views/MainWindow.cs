@@ -6,14 +6,12 @@ namespace ToDoApp.WinForms.Views
 {
     public partial class MainWindow : Form
     {
-        private ToDoListController _listController { get; set; }
+        public ToDoListController _listController { get; set; }
 
-        private ToDoItemController _itemController { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             _listController = new ToDoListController();
-            _itemController = new ToDoItemController();
         }
 
 
@@ -44,9 +42,23 @@ namespace ToDoApp.WinForms.Views
 
         }
 
-        private void newItem_Click(object sender, EventArgs e)
+        private void OpenSelectedList(object sender, EventArgs e)
         {
-            var newItem = _itemController.CreateNewToDoItem("itemName");
+ 
+            for (int i = 0; i < listContainer.Items.Count; i++)
+            {
+                if (listContainer.GetSelected(i) == true)
+                {
+                    ListWindow listWindow = new ListWindow();
+                    listWindow.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Nie zaznaczono żadnej listy ");
+                }
+            }
+            MessageBox.Show("Nie utworzono żadnej listy ");
         }
+
     }
 }

@@ -43,6 +43,10 @@ namespace ToDoApp.WinForms.Views
 
             var selectedList = listContainer.Items[index] as ToDoList;
             ListWindow listWindow = new ListWindow(selectedList, _listController);
+
+            if (selectedList == null)
+                return;
+
             listWindow.ShowDialog();
         }
         /*

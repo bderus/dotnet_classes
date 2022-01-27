@@ -23,43 +23,16 @@ namespace ToDoApp.WinForms.Views
             {
                 var newList = _listController.CreateNewToDoList(listName);
                 listContainer.Items.Add(newList);
+                textBox1.Clear();
             }
             else
             {
-                var userAnswer = MessageBox.Show("Nazwa listy jest za krótka", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (userAnswer == DialogResult.Yes)
-                {
-                    MessageBox.Show("Jesteś super");
-                }
-                else if (userAnswer == DialogResult.No)
-                {
-                    MessageBox.Show("O Ty chuju");
-                }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
+                MessageBox.Show("Nazwa listy jest za krótka", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
 
         }
 
-        private void OpenSelectedList(object sender, EventArgs e)
-        {
- 
-            //for (int i = 0; i < listContainer.Items.Count; i++)
-            //{
-            //    if (listContainer.GetSelected(i) == true)
-            //    {
-            //        ListWindow listWindow = new ListWindow();
-            //        listWindow.ShowDialog();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Nie zaznaczono żadnej listy ");
-            //    }
-            //}
-            //MessageBox.Show("Nie utworzono żadnej listy ");
-        }
 
         void listContainer_MouseDoubleClick(object sender, MouseEventArgs e)
         {

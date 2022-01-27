@@ -51,15 +51,6 @@
             this.textBox1.Size = new System.Drawing.Size(227, 27);
             this.textBox1.TabIndex = 4;
             // 
-            // openList
-            // 
-            this.openList.Location = new System.Drawing.Point(235, 222);
-            this.openList.Name = "openList";
-            this.openList.Size = new System.Drawing.Size(185, 74);
-            this.openList.TabIndex = 5;
-            this.openList.Text = "Open Selected List";
-            this.openList.UseVisualStyleBackColor = true;
-            this.openList.Click += new System.EventHandler(this.OpenSelectedList);
             // 
             // listBox1
             // 

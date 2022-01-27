@@ -39,6 +39,7 @@ namespace ToDoApp.WinForms.Views
         {
             var itemName = textBox1.Text;
             _listController.AddNewItemToList(_currentList.Id, itemName);
+            textBox1.Clear();
             RefreshItemsList();
         }
     }

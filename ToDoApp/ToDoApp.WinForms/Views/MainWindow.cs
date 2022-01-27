@@ -45,6 +45,11 @@ namespace ToDoApp.WinForms.Views
             ListWindow listWindow = new ListWindow(selectedList, _listController);
             listWindow.ShowDialog();
         }
-
+        /*
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Znalezc podswietlony Item
+            var selectedList = listContainer.Items.
+        }*/
     }
 }

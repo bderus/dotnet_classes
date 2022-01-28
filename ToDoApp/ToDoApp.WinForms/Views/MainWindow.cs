@@ -49,11 +49,13 @@ namespace ToDoApp.WinForms.Views
 
             listWindow.ShowDialog();
         }
-        /*
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void RemoveList_Click(object sender, EventArgs e)
         {
             // Znalezc podswietlony Item
-            var selectedList = listContainer.Items.
-        }*/
+            var selectedList = listContainer.SelectedIndex;
+            listContainer.Items.RemoveAt(selectedList);
+
+        }
     }
 }

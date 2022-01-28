@@ -31,7 +31,7 @@
             this.nowaLista = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.listContainer = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.removeList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nowaLista
@@ -62,19 +62,20 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(194, 213);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 72);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.removeList.Location = new System.Drawing.Point(194, 213);
+            this.removeList.Name = "button1";
+            this.removeList.Size = new System.Drawing.Size(197, 72);
+            this.removeList.TabIndex = 7;
+            this.removeList.Text = "Usuń Listę";
+            this.removeList.UseVisualStyleBackColor = true;
+            this.removeList.Click += RemoveList_Click;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.removeList);
             this.Controls.Add(this.listContainer);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.nowaLista);
@@ -91,6 +92,6 @@
         private System.Windows.Forms.Button nowaLista;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox listContainer;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button removeList;
     }
 }

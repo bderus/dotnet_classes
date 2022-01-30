@@ -45,6 +45,10 @@ namespace ToDoApp.WinForms.Views
 
         private void removeItem_Click(object sender, EventArgs e)
         {
+            itemContainer.DataSource = null;
+            var itemIndex = itemContainer.SelectedIndex;
+            itemContainer.Items.RemoveAt(itemIndex);
+            RefreshItemsList();
 
         }
     }

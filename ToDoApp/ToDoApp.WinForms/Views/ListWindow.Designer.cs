@@ -59,13 +59,13 @@
             this.itemContainer.Size = new System.Drawing.Size(149, 268);
             this.itemContainer.TabIndex = 2;
             // 
-            // button1
+            // removeItem
             // 
             this.removeItem.Location = new System.Drawing.Point(252, 135);
-            this.removeItem.Name = "button1";
+            this.removeItem.Name = "Usuń Item";
             this.removeItem.Size = new System.Drawing.Size(157, 80);
             this.removeItem.TabIndex = 3;
-            this.removeItem.Text = "button1";
+            this.removeItem.Text = "Usuń Item";
             this.removeItem.UseVisualStyleBackColor = true;
             this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
             // 

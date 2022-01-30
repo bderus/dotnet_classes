@@ -53,7 +53,7 @@
             // 
             // listContainer
             // 
-            this.listContainer.FormattingEnabled = true;
+            this.listContainer.FormattingEnabled = false;
             this.listContainer.ItemHeight = 20;
             this.listContainer.Location = new System.Drawing.Point(453, 213);
             this.listContainer.Name = "listContainer";

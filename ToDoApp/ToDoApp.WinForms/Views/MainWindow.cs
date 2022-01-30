@@ -52,10 +52,21 @@ namespace ToDoApp.WinForms.Views
         
         private void RemoveList_Click(object sender, EventArgs e)
         {
-            // Znalezc podswietlony Item
             var selectedList = listContainer.SelectedIndex;
-            listContainer.Items.RemoveAt(selectedList);
 
+            if (selectedList >= 0)
+            {
+                listContainer.Items.RemoveAt(selectedList);
+                removeList.Enabled = false;
+            }
+            else
+            {
+                return; 
+            }
+        }
+        private void EnableButton_RemoveList(object sender, EventArgs e)
+        {
+            removeList.Enabled = true;
         }
     }
 }

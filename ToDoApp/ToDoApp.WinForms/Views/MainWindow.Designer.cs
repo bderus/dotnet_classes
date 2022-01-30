@@ -59,8 +59,10 @@
             this.listContainer.Name = "listContainer";
             this.listContainer.Size = new System.Drawing.Size(231, 324);
             this.listContainer.TabIndex = 6;
+            this.listContainer.MouseDoubleClick += listContainer_MouseDoubleClick;
+            this.listContainer.SelectedIndexChanged += EnableButton_RemoveList;
             // 
-            // button1
+            // removeList
             // 
             this.removeList.Location = new System.Drawing.Point(194, 213);
             this.removeList.Name = "button1";
@@ -68,6 +70,7 @@
             this.removeList.TabIndex = 7;
             this.removeList.Text = "Usuń Listę";
             this.removeList.UseVisualStyleBackColor = true;
+            this.removeList.Enabled = false;
             this.removeList.Click += RemoveList_Click;
             // 
             // MainWindow

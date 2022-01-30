@@ -42,5 +42,10 @@ namespace ToDoApp.WinForms.Views
             textBox1.Clear();
             RefreshItemsList();
         }
+
+        private void removeItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

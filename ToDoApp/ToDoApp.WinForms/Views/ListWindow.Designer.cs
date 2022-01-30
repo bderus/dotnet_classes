@@ -31,6 +31,7 @@
             this.newitem = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.itemContainer = new System.Windows.Forms.CheckedListBox();
+            this.removeItem = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // newitem
@@ -54,15 +55,26 @@
             // 
             this.itemContainer.FormattingEnabled = true;
             this.itemContainer.Location = new System.Drawing.Point(437, 135);
-            this.itemContainer.Name = "checkedListBox1";
+            this.itemContainer.Name = "itemContainer";
             this.itemContainer.Size = new System.Drawing.Size(149, 268);
             this.itemContainer.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.removeItem.Location = new System.Drawing.Point(252, 135);
+            this.removeItem.Name = "button1";
+            this.removeItem.Size = new System.Drawing.Size(157, 80);
+            this.removeItem.TabIndex = 3;
+            this.removeItem.Text = "button1";
+            this.removeItem.UseVisualStyleBackColor = true;
+            this.removeItem.Click += new System.EventHandler(this.removeItem_Click);
             // 
             // ListWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.removeItem);
             this.Controls.Add(this.itemContainer);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.newitem);
@@ -78,5 +90,6 @@
         private System.Windows.Forms.Button newitem;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckedListBox itemContainer;
+        private System.Windows.Forms.Button removeItem;
     }
 }

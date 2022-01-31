@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using ToDoApp.BusinessLogic.Controllers;
+using ToDoApp.Models;
 
 namespace ToDoApp.WinForms.Views
 {
     public partial class MainWindow : Form
     {
-        private ToDoListController _listController { get; set; }
+        public ToDoListController _listController { get; set; }
 
-        private ToDoItemController _itemController { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             _listController = new ToDoListController();
-            _itemController = new ToDoItemController();
         }
 
 
@@ -23,30 +22,51 @@ namespace ToDoApp.WinForms.Views
             if (listName.Length >= 3)
             {
                 var newList = _listController.CreateNewToDoList(listName);
-                listContainer.Items.Add(newList.Name);
+                listContainer.Items.Add(newList);
+                textBox1.Clear();
             }
             else
             {
-                var userAnswer = MessageBox.Show("Nazwa listy jest za krótka", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (userAnswer == DialogResult.Yes)
-                {
-                    MessageBox.Show("Jesteś super");
-                }
-                else if (userAnswer == DialogResult.No)
-                {
-                    MessageBox.Show("O Ty chuju");
-                }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
+                MessageBox.Show("Nazwa listy jest za krótka", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
 
         }
 
-        private void newItem_Click(object sender, EventArgs e)
+
+        void listContainer_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var newItem = _itemController.CreateNewToDoItem("itemName");
+            var index = listContainer.IndexFromPoint(e.Location);
+            
+            if (index == ListBox.NoMatches) 
+                return;
+
+            var selectedList = listContainer.Items[index] as ToDoList;
+            ListWindow listWindow = new ListWindow(selectedList, _listController);
+
+            if (selectedList == null)
+                return;
+
+            listWindow.ShowDialog();
+        }
+        
+        private void RemoveList_Click(object sender, EventArgs e)
+        {
+            var selectedList = listContainer.SelectedIndex;
+
+            if (selectedList >= 0)
+            {
+                listContainer.Items.RemoveAt(selectedList);
+                removeList.Enabled = false;
+            }
+            else
+            {
+                return; 
+            }
+        }
+        private void EnableButton_RemoveList(object sender, EventArgs e)
+        {
+            removeList.Enabled = true;
         }
     }
 }

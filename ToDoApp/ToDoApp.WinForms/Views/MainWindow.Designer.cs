@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.nowaLista = new System.Windows.Forms.Button();
-            this.listContainer = new System.Windows.Forms.ListBox();
-            this.nowyItem = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listContainer = new System.Windows.Forms.ListBox();
+            this.removeList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nowaLista
@@ -44,40 +44,43 @@
             this.nowaLista.UseVisualStyleBackColor = true;
             this.nowaLista.Click += new System.EventHandler(this.newList_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(457, 51);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(227, 27);
+            this.textBox1.TabIndex = 4;
+            // 
             // listContainer
             // 
             this.listContainer.FormattingEnabled = true;
             this.listContainer.ItemHeight = 20;
-            this.listContainer.Location = new System.Drawing.Point(457, 222);
+            this.listContainer.Location = new System.Drawing.Point(453, 213);
             this.listContainer.Name = "listContainer";
-            this.listContainer.Size = new System.Drawing.Size(227, 324);
-            this.listContainer.TabIndex = 2;
+            this.listContainer.Size = new System.Drawing.Size(231, 324);
+            this.listContainer.TabIndex = 6;
+            this.listContainer.MouseDoubleClick += listContainer_MouseDoubleClick;
+            this.listContainer.SelectedIndexChanged += EnableButton_RemoveList;
             // 
-            // nowyItem
+            // removeList
             // 
-            this.nowyItem.Location = new System.Drawing.Point(88, 94);
-            this.nowyItem.Name = "nowyItem";
-            this.nowyItem.Size = new System.Drawing.Size(219, 102);
-            this.nowyItem.TabIndex = 3;
-            this.nowyItem.Text = "nowyItem";
-            this.nowyItem.UseVisualStyleBackColor = true;
-            this.nowyItem.Click += new System.EventHandler(this.newItem_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(88, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 27);
-            this.textBox1.TabIndex = 4;
+            this.removeList.Location = new System.Drawing.Point(194, 213);
+            this.removeList.Name = "button1";
+            this.removeList.Size = new System.Drawing.Size(197, 72);
+            this.removeList.TabIndex = 7;
+            this.removeList.Text = "Usuń Listę";
+            this.removeList.UseVisualStyleBackColor = true;
+            this.removeList.Enabled = false;
+            this.removeList.Click += RemoveList_Click;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.nowyItem);
+            this.Controls.Add(this.removeList);
             this.Controls.Add(this.listContainer);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.nowaLista);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainWindow";
@@ -89,10 +92,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button newItem;
         private System.Windows.Forms.Button nowaLista;
-        private System.Windows.Forms.ListBox listContainer;
-        private System.Windows.Forms.Button nowyItem;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listContainer;
+        private System.Windows.Forms.Button removeList;
     }
 }

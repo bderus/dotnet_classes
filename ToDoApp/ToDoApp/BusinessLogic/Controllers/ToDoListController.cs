@@ -10,7 +10,7 @@ namespace ToDoApp.BusinessLogic.Controllers
     public class ToDoListController
     {
         private int CurrentListId { get; set; }
-        public List<ToDoList> ToDoLists { get; set; }
+        private List<ToDoList> ToDoLists { get; set; }
         private ToDoItemController ToDoItemController { get; set; }
 
         public ToDoListController()
@@ -31,10 +31,10 @@ namespace ToDoApp.BusinessLogic.Controllers
             };
 
             ToDoLists.Add(newToDoList);
-            CurrentListId ++;
+            CurrentListId++;
             return newToDoList;
         }
-      
+
         public bool AddNewItemToList(int listId, string itemName)
         {
 
@@ -46,6 +46,20 @@ namespace ToDoApp.BusinessLogic.Controllers
                     list.ToDoItems.Add(newItem);
                     return true;
                 }
+
+            }
+            return false;
+        }
+        public bool RemoveSelectedList(int selectedListId)
+        {
+            foreach (var list in ToDoLists)
+            {
+                if (list.Id == selectedListId)
+                {
+                    ToDoLists.Remove(list);
+                    return true;
+                }
+                                
                 
             }
             return false;

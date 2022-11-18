@@ -10,7 +10,21 @@ namespace ToDoApp.BusinessLogic
     {
         public void StartApp()
         {
-            ConsoleMenu.PrintMainMenu();
+            MainMenu();
+        }
+
+        public void MainMenu()
+        {
+            while (true)
+            {
+                var username = ConsoleMenu.PrintMainMenu();
+
+                if (username == "1")
+                    return;
+
+                if (username == "2")
+                    return;         
+            }
         }
     }
 }

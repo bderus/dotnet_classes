@@ -6,8 +6,8 @@ namespace FileOperation
     {
         static void Main(string[] args)
         {
-            var file = new FileOperation(args[0], args[1]);
-            file.RollFile();
+            ConsoleApp.MainMenu(args[0], args[1]);
+
         }
     }
 }

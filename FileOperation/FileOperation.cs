@@ -41,7 +41,7 @@ namespace FileOperation
         {
             if (File.Exists(destFilePath))
             {
-                Console.WriteLine("Plik o nazwie RA juz istnieje");
+                Console.WriteLine("Plik o tej nazwie juz istnieje");
                 return false;
             }
             else
@@ -53,7 +53,7 @@ namespace FileOperation
         {
             if (CheckIfDestFileExist(destFilePath))
             {
-                File.Copy(path, "RA");
+                File.Copy(path, destFilePath);
                 Console.WriteLine("Plik został skopionowany");
             }
            

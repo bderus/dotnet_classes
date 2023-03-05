@@ -6,7 +6,9 @@ namespace FileOperation
     {
         static void Main(string[] args)
         {
-            ConsoleApp.MainMenu(args[0], args[1]);
+            var parser = new CommandLineParser();
+            var argsParsed = parser.ArgumentParser(args);
+            ConsoleApp.MainMenu(argsParsed[0], argsParsed[1]);           
 
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileOperation
 {
-    internal class CommandLineParser
+    public class CommandLineParser
     {
         public List<string> ArgumentParser(string[] args)
         {
@@ -15,8 +15,8 @@ namespace FileOperation
             {
                 if (arg.Contains("="))
                 {
-                    arg.Substring(arg.IndexOf('='));
-                    parsedArgs.Add(arg);
+                    var parsedString = arg.Substring(arg.IndexOf('=') + 1);
+                    parsedArgs.Add(parsedString);
                 }
                 else
                 {

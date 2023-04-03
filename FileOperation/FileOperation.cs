@@ -23,7 +23,26 @@ namespace FileOperation
             File.Copy(sourcePath, destPath);
         }
 
+        private string[] GetRowsFromFile(string sourcePath)
+        {
+            var readText = File.ReadAllText(sourcePath);
 
+            string[] rows = readText.Split("\n");
 
+            return rows;
+        }
+        public void SetNewValueForElement(string cobDate, string sourcePath)
+        {
+            var rows = GetRowsFromFile(sourcePath);
+
+            for (var i = 0; i < rows.Length; i++)
+            {
+                var elements = rows[i].Split(",");
+                if (i != 0)
+                {
+                    elements[0] = cobDate;
+                }
+            }      
+        }
     }
 }

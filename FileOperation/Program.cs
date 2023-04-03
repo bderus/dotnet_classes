@@ -6,10 +6,9 @@ namespace FileOperation
     {
         static void Main(string[] args)
         {
-            var parser = new CommandLineParser();
-            var argsParsed = parser.ArgumentParser(args);
-            ConsoleApp.MainMenu(argsParsed[0], argsParsed[1]);           
 
+            var rollFile = new FileOperation();
+            rollFile.RollFile(args[0]);
         }
     }
 }

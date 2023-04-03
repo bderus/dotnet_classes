@@ -4,39 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Globalization;
 
 namespace FileOperation
 {
     internal class FileOperation
     {
-        public string Path { get; set; }
-        public string DestFilePath { get; set; }
+        public string DefaultPath { get; set; } = "C:\\Users\\piotr\\OneDrive\\Pulpit";
+        public string FileName { get; set; } = "transport<COBDATE>.csv";
 
-        public FileOperation(string path, string destFilePath)
+
+        public void RollFile(string cobDate)
         {
-            Path = path;
-            DestFilePath = destFilePath;
+            var previousCobDate = GetPreviousCobDate(cobDate);
+            var destPath = Path.Combine(DefaultPath, FileName.Replace("<COBDATE>", cobDate));
+            var sourcePath = Path.Combine(DefaultPath, FileName.Replace("<COBDATE>", previousCobDate));
+            File.Copy(sourcePath, destPath);
+        }
+        public string GetPreviousCobDate(string cobDate)
+        {
+            var cobDateToDateTimeMinusOne = DateTime.ParseExact(cobDate, "yyyyMMdd", CultureInfo.InvariantCulture).AddDays(-1);
+
+            return cobDateToDateTimeMinusOne.ToString("yyyyMMdd");
         }
 
-        public void RollFile()
-        {
-            var path = Path;
-            var destFilePath = DestFilePath;
-
-            if (CheckIfFileToCopyExist(path))
-            {
-                CopyFile(path, destFilePath);
-            }
-            else
-            {
-                Console.WriteLine("Nie znaleziono pliku o podanej ścieżce");
-            }
-        }
-
-        public bool CheckIfFileToCopyExist(string path)
-        {
-            return File.Exists(path);
-        }
         public bool CheckIfDestFileExist(string destFilePath)
         {
             if (File.Exists(destFilePath))

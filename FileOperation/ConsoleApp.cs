@@ -16,8 +16,6 @@ namespace FileOperation
             var userChoice = Console.ReadLine();
             if (userChoice == "1")
             {
-                var file = new FileOperation(path, destFilePath);
-                file.RollFile(); 
 
             }
         }

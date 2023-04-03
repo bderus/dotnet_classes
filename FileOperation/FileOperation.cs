@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
+using FileOperation.Helper;
 
 namespace FileOperation
 {
@@ -16,39 +17,13 @@ namespace FileOperation
 
         public void RollFile(string cobDate)
         {
-            var previousCobDate = GetPreviousCobDate(cobDate);
+            var previousCobDate = CobDateHelper.GetPreviousCobDate(cobDate);
             var destPath = Path.Combine(DefaultPath, FileName.Replace("<COBDATE>", cobDate));
             var sourcePath = Path.Combine(DefaultPath, FileName.Replace("<COBDATE>", previousCobDate));
             File.Copy(sourcePath, destPath);
         }
-        public string GetPreviousCobDate(string cobDate)
-        {
-            var cobDateToDateTimeMinusOne = DateTime.ParseExact(cobDate, "yyyyMMdd", CultureInfo.InvariantCulture).AddDays(-1);
 
-            return cobDateToDateTimeMinusOne.ToString("yyyyMMdd");
-        }
 
-        public bool CheckIfDestFileExist(string destFilePath)
-        {
-            if (File.Exists(destFilePath))
-            {
-                Console.WriteLine("Plik o tej nazwie juz istnieje");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        public void CopyFile(string path, string destFilePath)
-        {
-            if (CheckIfDestFileExist(destFilePath))
-            {
-                File.Copy(path, destFilePath);
-                Console.WriteLine("Plik został skopionowany");
-            }
-           
-        }
 
     }
 }

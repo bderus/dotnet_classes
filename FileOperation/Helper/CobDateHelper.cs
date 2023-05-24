@@ -15,5 +15,11 @@ namespace FileOperation.Helper
 
             return cobDateToDateTimeMinusOne.ToString("yyyyMMdd");
         }
+
+        public static string ChangeCobDateFormat(string cobDate)
+        {
+            var cobDateToDateTime = DateTime.ParseExact(cobDate, "yyyyMMdd", CultureInfo.InvariantCulture);
+            return cobDateToDateTime.ToString("dd-MM-yyyy");
+        }
     }
 }

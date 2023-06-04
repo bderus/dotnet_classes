@@ -26,7 +26,7 @@ namespace FileOperation
            
         }
 
-        private string[] GetRowsFromFile(string sourcePath)
+        public string[] GetRowsFromFile(string sourcePath)
         {
             var readText = File.ReadAllText(sourcePath);
 

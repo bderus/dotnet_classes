@@ -3,5 +3,10 @@
     "FileOperation": {
       "commandName": "Project"
     }
+  },
+  "EPPlus": {
+    "ExcelPackage": {
+      "LicenseContext": "NonCommercial" //The license context used
+    }
   }
 }
